@@ -25,7 +25,6 @@ import com.saurav.bankingapp.model.enums.UserType;
 import com.saurav.bankingapp.service.UserService;
 
 
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -37,7 +36,7 @@ public class BankingAppControllerTest {
 
 	@MockBean
 	private UserService userService;
-	//(newUser.getName(), newUser.getEmail(), newUser.getPassword(), newUser.getPhone(), newUser.getAddress(), newUser.getType())
+	
 	User mockUser = new User("Simbha", "lion@king", "HakunaMatata","12345678", "123 abc avenue", UserType.REGULAR );
 	
 	String userJson = "{\"Name\": \"Simbha\",\"email\": \"lion@king\",\"password\": \"HakunaMatata\",\"type\": \"BLOGGER\"}";

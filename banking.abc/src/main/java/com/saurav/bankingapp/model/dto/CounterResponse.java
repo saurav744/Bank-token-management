@@ -2,19 +2,19 @@ package com.saurav.bankingapp.model.dto;
 
 import java.util.List;
 
-public class CounterDto {
+public class CounterResponse {
 	
 	private int counterNumber;
 	
 	private List<Long> tokens;
 
-	public CounterDto(int counterNumber, List<Long> tokens) {
+	public CounterResponse(int counterNumber, List<Long> tokens) {
 		super();
 		this.counterNumber = counterNumber;
 		this.tokens = tokens;
 	}
 
-	public CounterDto() {
+	public CounterResponse() {
 	}
 
 	public int getCounterNumber() {

@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.saurav.bankingapp.model.BankService;
 import com.saurav.bankingapp.model.Counter;
-import com.saurav.bankingapp.model.User;
 import com.saurav.bankingapp.model.enums.CounterPriority;
 
 public interface BankServiceService {

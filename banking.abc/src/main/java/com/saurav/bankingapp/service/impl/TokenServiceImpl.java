@@ -52,13 +52,25 @@ public class TokenServiceImpl implements TokenService {
 
 	@Override
 	public void delete(long id) throws TokenNotFoundException {
-		tokenRepository.deleteById(id);
+		
+		if(tokenRepository.findById(id).isPresent()) {
+			tokenRepository.deleteById(id);
+		}
+		else
+			throw new TokenNotFoundException();
 		
 	}
 
 	@Override
 	public Token get(long id) throws TokenNotFoundException {
-		return tokenRepository.getOne(id);
+		
+	    Optional<Token> token = tokenRepository.findById(id);
+		
+		if(token.isPresent()) {
+			return token.get();
+		}
+		else
+			throw new TokenNotFoundException();
 	}
 
 	@Override
@@ -68,17 +80,36 @@ public class TokenServiceImpl implements TokenService {
 
 	@Override
 	public void setState(long id, TokenState state) throws TokenNotFoundException {
-		Token token = tokenRepository.getOne(id);
-		token.setStatus(state);
-		tokenRepository.save(token);
+		
+	    Optional<Token> token = tokenRepository.findById(id);
+		
+		if(token.isPresent()) {
+			if(token.get().getStatus() == TokenState.VALID) {
+				token.get().setStatus(state);;
+				tokenRepository.save(token.get());
+			}
+			else
+				throw new TokenNotFoundException();
+		}
+		else
+			throw new TokenNotFoundException();
 	}
 
 	@Override
 	public void updateComment(long id, String comment) throws TokenNotFoundException {
- 		Token token = tokenRepository.getOne(id);
-		token.setComment(comment);
-		tokenRepository.save(token);
 		
+		Optional<Token> token = tokenRepository.findById(id);
+		
+		if(token.isPresent()) {
+			if(token.get().getStatus() == TokenState.VALID) {
+				token.get().setComment(comment);
+				tokenRepository.save(token.get());
+			}
+			else
+				throw new TokenNotFoundException();
+		}
+		else
+			throw new TokenNotFoundException();	
 	}
 
 	@Override

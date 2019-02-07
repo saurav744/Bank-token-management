@@ -1,14 +1,11 @@
 package com.saurav.bankingapp.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,12 +14,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.saurav.bankingapp.exceptions.TokenNotFoundException;
-import com.saurav.bankingapp.exceptions.UserNotFoundException;
 import com.saurav.bankingapp.model.BankService;
 import com.saurav.bankingapp.model.Counter;
 import com.saurav.bankingapp.model.Token;
 import com.saurav.bankingapp.model.User;
-import com.saurav.bankingapp.model.dto.CounterDto;
+import com.saurav.bankingapp.model.dto.CounterResponse;
 import com.saurav.bankingapp.model.dto.TokenRequest;
 import com.saurav.bankingapp.model.enums.CounterPriority;
 import com.saurav.bankingapp.model.enums.TokenState;
@@ -33,7 +29,7 @@ import com.saurav.bankingapp.service.TokenService;
 import com.saurav.bankingapp.service.UserService;
 
 @RestController
-public class BankingAppController {
+public class TokenController {
 	
 	@Autowired
 	private UserService userService;
@@ -44,65 +40,32 @@ public class BankingAppController {
 	@Autowired
 	private BankServiceService bankServiceService;
 	
-	@GetMapping("/users/id/{id}")
-	public User getUser(@PathVariable Long id) throws UserNotFoundException {
-		return userService.getById(id);
-	}
-	
-	@GetMapping("/users/phone/{phone}")
-	public User getUser(@PathVariable String phone) throws UserNotFoundException {	
-		return userService.get(phone);
-	}
-	
-	
-	@PostMapping("/users")
-	public void createUser(@RequestBody User newUser) {
-		userService.add(newUser.getName(), newUser.getEmail(), newUser.getPassword(), newUser.getPhone(), newUser.getAddress(), newUser.getType());
-	}
-	
-	
-	@DeleteMapping("/users/{id}")
-	public void deleteUser(@PathVariable Long id) throws UserNotFoundException {
-
-		userService.delete(id);
-	
-	}
-	
-	@PostMapping("/services")
-	public void createService(@RequestBody BankService newService) {
-		bankServiceService.add(newService);
-	}
-	
-	@PostMapping("/counters")
-	public void createCounter(@RequestBody Counter counter) {
-		counterService.add(counter);
-	}
 	
 	@GetMapping("/tokens")
-	public List<CounterDto> getCounterTokenMapping() throws Exception {
+	public List<CounterResponse> getCounterTokenMapping() throws Exception {
 		
-		List<CounterDto> counterTokenMap = new ArrayList<CounterDto>();
+		List<CounterResponse> counterTokenMap = new ArrayList<CounterResponse>();
 		List<Counter> counters = counterService.getAll();
 		
 		for (Counter counter : counters) {
 			
 			List<Token> tokens = tokenService.getTokensByCounter(counter);
 			List<Long> tokenIds = tokens.stream().map(Token::getId).collect(Collectors.toList());
-			CounterDto counterDto = new CounterDto(counter.getNumber(), tokenIds);
-			counterTokenMap.add(counterDto);	
+			CounterResponse counterResponse = new CounterResponse(counter.getNumber(), tokenIds);
+			counterTokenMap.add(counterResponse);	
 		}
 		return counterTokenMap;
 	}
 	
 	@GetMapping("/tokens/{counterNumber}")
-	public CounterDto getTokensByCounter(@PathVariable int counterNumber) throws Exception {
+	public CounterResponse getTokensByCounter(@PathVariable int counterNumber) throws Exception {
 		
 		Counter counter = counterService.get(counterNumber);
 		List<Token> tokens = tokenService.getTokensByCounter(counter);
 		List<Long> tokenIds = tokens.stream().map(Token::getId).collect(Collectors.toList());
-		CounterDto counterDto = new CounterDto(counterNumber, tokenIds);
+		CounterResponse counterResponse = new CounterResponse(counterNumber, tokenIds);
 		
-		return counterDto;	
+		return counterResponse;	
 	}
 	
 	@Transactional
@@ -163,15 +126,6 @@ public class BankingAppController {
 		}
 		
 		tokenService.setState(id, TokenState.CANCELLED);
-	}
-	
-	@GetMapping("/services")
-	public List<String> getServices() {
-		List<BankService> bankServices = bankServiceService.getAll();	
-		List<String> serviceNames = bankServices.stream().map(BankService::getName).collect(Collectors.toList());
-		
-		return serviceNames;	
-	}
-	
+	}	
 	
 }
