@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.saurav.bankingapp.model.enums.UserType;
 
 @Entity
@@ -19,6 +20,7 @@ public class User {
 	private String name;
 	@Column(unique = true)
 	private String email;
+	@JsonIgnore
 	private String password;
 	@Column(unique = true)
 	private String phone;

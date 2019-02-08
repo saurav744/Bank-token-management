@@ -27,7 +27,7 @@ public class TokenServiceImpl implements TokenService {
 	private TokenRepository tokenRepository;
 
 	@Override
-	public long create(User user, Counter counter, List<BankService> services) {
+	public Token create(User user, Counter counter, List<BankService> services) {
 		
 		Token token = new Token();
 		
@@ -47,7 +47,7 @@ public class TokenServiceImpl implements TokenService {
 		
 		Token created = tokenRepository.save(token);
 		
-		return created.getId();
+		return created;
 	}
 
 	@Override
@@ -141,7 +141,7 @@ public class TokenServiceImpl implements TokenService {
 		if(optionalToken.isPresent()) {
 			
 			Token token = optionalToken.get();
-			int index= token.getTokenJobs().indexOf(token.getCurrentJob());
+			int index = token.getTokenJobs().indexOf(token.getCurrentJob());
 			
 			if(index < token.getTokenJobs().size()-1) {
 				token.setCurrentJob(token.getTokenJobs().get(index+1));	

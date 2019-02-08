@@ -8,6 +8,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Job {
 	
@@ -20,6 +22,7 @@ public class Job {
     @JoinColumn(name = "service_id")
 	private BankService service;
 	
+	@JsonIgnore
 	@NotNull
     @ManyToOne
     @JoinColumn(name = "token_id")

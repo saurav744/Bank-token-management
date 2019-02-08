@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,10 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.saurav.bankingapp.exceptions.TokenNotFoundException;
 import com.saurav.bankingapp.model.BankService;
 import com.saurav.bankingapp.model.Counter;
+import com.saurav.bankingapp.model.Job;
 import com.saurav.bankingapp.model.Token;
 import com.saurav.bankingapp.model.User;
 import com.saurav.bankingapp.model.dto.CounterResponse;
 import com.saurav.bankingapp.model.dto.TokenRequest;
+import com.saurav.bankingapp.model.dto.TokenResponse;
 import com.saurav.bankingapp.model.enums.CounterPriority;
 import com.saurav.bankingapp.model.enums.TokenState;
 import com.saurav.bankingapp.model.enums.UserType;
@@ -47,30 +48,37 @@ public class TokenController {
 		List<CounterResponse> counterTokenMap = new ArrayList<CounterResponse>();
 		List<Counter> counters = counterService.getAll();
 		
-		for (Counter counter : counters) {
-			
-			List<Token> tokens = tokenService.getTokensByCounter(counter);
-			List<Long> tokenIds = tokens.stream().map(Token::getId).collect(Collectors.toList());
-			CounterResponse counterResponse = new CounterResponse(counter.getNumber(), tokenIds);
-			counterTokenMap.add(counterResponse);	
+		for (Counter counter : counters) {	
+			counterTokenMap.add(createCounterReponse(counter));	
 		}
 		return counterTokenMap;
 	}
 	
-	@GetMapping("/tokens/{counterNumber}")
+	@GetMapping("/tokens/counter/{counterNumber}")
 	public CounterResponse getTokensByCounter(@PathVariable int counterNumber) throws Exception {
 		
 		Counter counter = counterService.get(counterNumber);
-		List<Token> tokens = tokenService.getTokensByCounter(counter);
-		List<Long> tokenIds = tokens.stream().map(Token::getId).collect(Collectors.toList());
-		CounterResponse counterResponse = new CounterResponse(counterNumber, tokenIds);
-		
-		return counterResponse;	
+		return createCounterReponse(counter);	
 	}
 	
-	@Transactional
+	private CounterResponse createCounterReponse(Counter counter) {		
+		List<Token> tokens = tokenService.getTokensByCounter(counter);
+		List<Long> tokenIds = tokens.stream().map(Token::getId).collect(Collectors.toList());
+		CounterResponse counterResponse = new CounterResponse(counter.getNumber(), tokenIds);
+		
+		return counterResponse;		
+	}
+	
+	@GetMapping("/tokens/{id}")
+	public TokenResponse getTokenById(@PathVariable long id) throws Exception {
+		
+		Token token = tokenService.get(id);
+		
+		return createTokenResponse(token);
+	}
+	
 	@PostMapping("/tokens")
-	public long create(@RequestBody TokenRequest tokenRequest) throws Exception {
+	public TokenResponse create(@RequestBody TokenRequest tokenRequest) throws Exception {
 		
 		List<BankService> services = bankServiceService.getUserServices(tokenRequest.getServiceNames());
 		User user = userService.get(tokenRequest.getPhone());
@@ -78,10 +86,24 @@ public class TokenController {
 		Counter counter = bankServiceService.allocateCounter(services.get(0).getName(), priority);
 		counterService.incrementQueueSize(counter.getNumber());
 		
-		return tokenService.create(user, counter, services);	
+		Token token = tokenService.create(user, counter, services);
+		
+		return createTokenResponse(token);
 	}
 	
-	@Transactional
+	private TokenResponse createTokenResponse(Token token) {
+		
+		List<String> services = new ArrayList<String>();
+		
+		for(Job job : token.getTokenJobs()) {
+			services.add(job.getService().getName());
+		}
+		
+		return new TokenResponse(token.getId(), token.getUser().getId(), services, 
+				token.getCurrentCounter().getNumber(), token.getCurrentJob().getId(), token.getStatus(),
+				token.getCreatedAt(), token.getComment());	
+	}
+	
 	@PutMapping("/tokens/{id}/complete")
 	public void completeToken(@PathVariable Long id) throws TokenNotFoundException {
 
@@ -106,7 +128,6 @@ public class TokenController {
 		tokenService.updateToken(token);
 	}
 	
-	@Transactional
 	@PutMapping("/tokens/{id}/comment")
 	public void comment(@PathVariable Long id, @RequestBody String comment) throws TokenNotFoundException {
 
@@ -117,7 +138,6 @@ public class TokenController {
 		tokenService.updateComment(id, comment);
 	}
 	
-	@Transactional
 	@PutMapping("/tokens/{id}/cancel")
 	public void cancelToken(@PathVariable Long id) throws TokenNotFoundException {
 

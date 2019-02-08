@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.JoinColumn;
 
 @Entity
@@ -34,7 +37,12 @@ public class BankService {
 
 	public BankService() {
 		
-		counters = new ArrayList<>();
+	}
+	
+	public BankService(@NotNull String name, Long nextId, List<Counter> counters) {
+		this.name = name;
+		this.nextId = nextId;
+		this.counters = counters;
 	}
 
 	public long getId() {

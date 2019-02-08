@@ -48,8 +48,7 @@ public class CounterServiceImpl implements CounterService{
 		Counter counter = counterRepository.findByNumber(number);
 		int len = counter.getQueueSize();
 		counter.setQueueSize(len + 1);
-		counterRepository.save(counter);
-		
+		counterRepository.save(counter);	
 	}
 
 	@Override

@@ -28,8 +28,8 @@ import com.saurav.bankingapp.service.UserService;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-@WithMockUser(username = "lion@king", password = "HakunaMatata", authorities = { "MANAGER", "PREMIUM", "OPERATOR", "REGULAR" })
-public class BankingAppControllerTest {
+@WithMockUser(username = "12345678", password = "HakunaMatata", authorities = { "MANAGER", "PREMIUM", "OPERATOR", "REGULAR" })
+public class UserControllerTest {
 	
 	@Autowired
 	private MockMvc mockMvc;
@@ -37,9 +37,9 @@ public class BankingAppControllerTest {
 	@MockBean
 	private UserService userService;
 	
-	User mockUser = new User("Simbha", "lion@king", "HakunaMatata","12345678", "123 abc avenue", UserType.REGULAR );
+	User mockUser = new User("Simbha", "lion@king", "HakunaMatata", "12345678", "123 abc avenue", UserType.REGULAR );
 	
-	String userJson = "{\"Name\": \"Simbha\",\"email\": \"lion@king\",\"password\": \"HakunaMatata\",\"type\": \"BLOGGER\"}";
+	String userJson = "{\"name\": \"Simbha\",\"email\": \"lion@king\",\"password\": \"HakunaMatata\",\"phone\": \"12345678\",\"type\": \"REGULAR\"}";
 	
 	@Test
 	public void testGetUserById_001() throws Exception {
@@ -54,7 +54,7 @@ public class BankingAppControllerTest {
 		
 		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
 		
-		String expected = "{id:0,Name:Simbha,email:lion@king}";
+		String expected = "{id:0,name:Simbha,email:lion@king}";
 		
 		JSONAssert.assertEquals(expected, result.getResponse()
 				.getContentAsString(), false);

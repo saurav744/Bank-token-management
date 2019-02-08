@@ -11,7 +11,7 @@ import com.saurav.bankingapp.model.enums.TokenState;
 
 public interface TokenService {
 	
-	public long create(User user, Counter counter, List<BankService> services);
+	public Token create(User user, Counter counter, List<BankService> services);
 	
 	public void delete(long id) throws TokenNotFoundException;
 	

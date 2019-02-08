@@ -9,7 +9,6 @@ public class CounterResponse {
 	private List<Long> tokens;
 
 	public CounterResponse(int counterNumber, List<Long> tokens) {
-		super();
 		this.counterNumber = counterNumber;
 		this.tokens = tokens;
 	}

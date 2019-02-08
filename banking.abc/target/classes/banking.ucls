@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.3" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="com.saurav.bankingapp.BankingApp" project="banking.abc" 
+    file="/banking.abc/src/main/java/com/saurav/bankingapp/BankingApp.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="109" x="25" y="24"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="com.saurav.bankingapp.controller.CounterController" project="banking.abc" 
+    file="/banking.abc/src/main/java/com/saurav/bankingapp/controller/CounterController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="150" x="60" y="558"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="com.saurav.bankingapp.controller.UserController" project="banking.abc" 
+    file="/banking.abc/src/main/java/com/saurav/bankingapp/controller/UserController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="150" x="785" y="571"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="com.saurav.bankingapp.controller.ServiceController" project="banking.abc" 
+    file="/banking.abc/src/main/java/com/saurav/bankingapp/controller/ServiceController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="150" x="300" y="566"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="com.saurav.bankingapp.controller.TokenController" project="banking.abc" 
+    file="/banking.abc/src/main/java/com/saurav/bankingapp/controller/TokenController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="150" x="539" y="567"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="com.saurav.bankingapp.exceptions.TokenNotFoundException" project="banking.abc" 
+    file="/banking.abc/src/main/java/com/saurav/bankingapp/exceptions/TokenNotFoundException.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="171" x="200" y="22"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="com.saurav.bankingapp.exceptions.UserNotFoundException" project="banking.abc" 
+    file="/banking.abc/src/main/java/com/saurav/bankingapp/exceptions/UserNotFoundException.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="164" x="451" y="21"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="8" language="java" name="com.saurav.bankingapp.model.enums.UserType" project="banking.abc" 
+    file="/banking.abc/src/main/java/com/saurav/bankingapp/model/enums/UserType.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="168" x="-27" y="301"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <enumeration id="9" language="java" name="com.saurav.bankingapp.model.enums.CounterPriority" project="banking.abc" 
+    file="/banking.abc/src/main/java/com/saurav/bankingapp/model/enums/CounterPriority.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="168" x="381" y="301"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <enumeration id="10" language="java" name="com.saurav.bankingapp.model.enums.TokenState" project="banking.abc" 
+    file="/banking.abc/src/main/java/com/saurav/bankingapp/model/enums/TokenState.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="168" x="170" y="296"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="11" language="java" name="com.saurav.bankingapp.model.Job" project="banking.abc" 
+    file="/banking.abc/src/main/java/com/saurav/bankingapp/model/Job.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="164" x="906" y="131"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="com.saurav.bankingapp.model.Counter" project="banking.abc" 
+    file="/banking.abc/src/main/java/com/saurav/bankingapp/model/Counter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="175" x="633" y="300"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="com.saurav.bankingapp.model.Token" project="banking.abc" 
+    file="/banking.abc/src/main/java/com/saurav/bankingapp/model/Token.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="185" x="426" y="144"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="com.saurav.bankingapp.model.User" project="banking.abc" 
+    file="/banking.abc/src/main/java/com/saurav/bankingapp/model/User.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="259" x="-50" y="154"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="com.saurav.bankingapp.model.BankService" project="banking.abc" 
+    file="/banking.abc/src/main/java/com/saurav/bankingapp/model/BankService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="181" x="890" y="299"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="com.saurav.bankingapp.model.dto.TokenRequest" project="banking.abc" 
+    file="/banking.abc/src/main/java/com/saurav/bankingapp/model/dto/TokenRequest.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="158" x="685" y="17"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="com.saurav.bankingapp.model.dto.CounterResponse" project="banking.abc" 
+    file="/banking.abc/src/main/java/com/saurav/bankingapp/model/dto/CounterResponse.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="153" x="905" y="19"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="18" language="java" name="com.saurav.bankingapp.repository.BankServiceRepository" project="banking.abc" 
+    file="/banking.abc/src/main/java/com/saurav/bankingapp/repository/BankServiceRepository.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="161" x="271" y="900"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="19" language="java" name="com.saurav.bankingapp.repository.TokenRepository" project="banking.abc" 
+    file="/banking.abc/src/main/java/com/saurav/bankingapp/repository/TokenRepository.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="199" x="497" y="898"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="20" language="java" name="com.saurav.bankingapp.repository.CounterRepository" project="banking.abc" 
+    file="/banking.abc/src/main/java/com/saurav/bankingapp/repository/CounterRepository.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="153" x="43" y="905"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="21" language="java" name="com.saurav.bankingapp.repository.UserRepository" project="banking.abc" 
+    file="/banking.abc/src/main/java/com/saurav/bankingapp/repository/UserRepository.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="153" x="824" y="900"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="22" language="java" name="com.saurav.bankingapp.security.BankingAppAuthenticationEntryPoint" 
+    project="banking.abc" 
+    file="/banking.abc/src/main/java/com/saurav/bankingapp/security/BankingAppAuthenticationEntryPoint.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="237" x="507" y="434"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="com.saurav.bankingapp.security.SecurityConfig" project="banking.abc" 
+    file="/banking.abc/src/main/java/com/saurav/bankingapp/security/SecurityConfig.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="145" x="942" y="442"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="com.saurav.bankingapp.security.BankingAppUserDetailsService" 
+    project="banking.abc" 
+    file="/banking.abc/src/main/java/com/saurav/bankingapp/security/BankingAppUserDetailsService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="206" x="990" y="722"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="25" language="java" name="com.saurav.bankingapp.service.TokenService" project="banking.abc" 
+    file="/banking.abc/src/main/java/com/saurav/bankingapp/service/TokenService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="142" x="561" y="726"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="26" language="java" name="com.saurav.bankingapp.service.BankServiceService" project="banking.abc" 
+    file="/banking.abc/src/main/java/com/saurav/bankingapp/service/BankServiceService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="142" x="338" y="717"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="27" language="java" name="com.saurav.bankingapp.service.CounterService" project="banking.abc" 
+    file="/banking.abc/src/main/java/com/saurav/bankingapp/service/CounterService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="142" x="59" y="713"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="28" language="java" name="com.saurav.bankingapp.service.UserService" project="banking.abc" 
+    file="/banking.abc/src/main/java/com/saurav/bankingapp/service/UserService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="142" x="787" y="726"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="29" language="java" name="com.saurav.bankingapp.service.impl.UserServiceImpl" project="banking.abc" 
+    file="/banking.abc/src/main/java/com/saurav/bankingapp/service/impl/UserServiceImpl.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="162" x="701" y="822"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="com.saurav.bankingapp.service.impl.TokenServiceImpl" project="banking.abc" 
+    file="/banking.abc/src/main/java/com/saurav/bankingapp/service/impl/TokenServiceImpl.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="162" x="449" y="816"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="com.saurav.bankingapp.service.impl.CounterServiceImpl" project="banking.abc" 
+    file="/banking.abc/src/main/java/com/saurav/bankingapp/service/impl/CounterServiceImpl.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="162" x="0" y="806"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="com.saurav.bankingapp.service.impl.BankServiceServiceImpl" project="banking.abc" 
+    file="/banking.abc/src/main/java/com/saurav/bankingapp/service/impl/BankServiceServiceImpl.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="166" x="207" y="816"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="33">    
+    <end type="SOURCE" refId="31" navigable="false">      
+      <attribute id="34" name="counterRepository"/>      
+      <multiplicity id="35" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="36">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="37" name="counterService"/>      
+      <multiplicity id="38" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="27" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="39">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="40" name="bankServiceService"/>      
+      <multiplicity id="41" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="26" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="42">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="26"/>  
+  </realization>  
+  <association id="43">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="44" name="bankServiceService">        
+        <position height="17" width="101" x="451" y="675"/>      
+      </attribute>      
+      <multiplicity id="45" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="26" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="46">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="47" name="userService">        
+        <position height="17" width="64" x="766" y="697"/>      
+      </attribute>      
+      <multiplicity id="48" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="49">    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="50" name="tokenRepository"/>      
+      <multiplicity id="51" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="52">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="53" name="appUserDetailsService"/>      
+      <multiplicity id="54" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="24" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="55">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="25"/>  
+  </realization>  
+  <association id="56">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="57" name="userRepository"/>      
+      <multiplicity id="58" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="59">    
+    <bendpoint x="745" y="105"/>    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="60" name="token"/>      
+      <multiplicity id="61" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="62">    
+    <bendpoint x="734" y="151"/>    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="63" name="tokenJobs">        
+        <position height="17" width="56" x="788" y="135"/>      
+      </attribute>      
+      <multiplicity id="64" minimum="0" maximum="2147483647">        
+        <position height="15" width="21" x="807" y="157"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="65">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="66" name="appAuthenticationEntryPoint"/>      
+      <multiplicity id="67" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="22" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="68">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="27"/>  
+  </realization>  
+  <association id="69">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="70" name="service"/>      
+      <multiplicity id="71" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="72">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="73" name="status">        
+        <position height="17" width="36" x="82" y="467"/>      
+      </attribute>      
+      <multiplicity id="74" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="75">    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="76" name="bankServiceRepository"/>      
+      <multiplicity id="77" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="78">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="79" name="type"/>      
+      <multiplicity id="80" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="81">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="82" name="userService">        
+        <position height="17" width="64" x="722" y="712"/>      
+      </attribute>      
+      <multiplicity id="83" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="84">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="85" name="counterService">        
+        <position height="17" width="79" x="193" y="692"/>      
+      </attribute>      
+      <multiplicity id="86" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="27" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="87">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="88" name="counters"/>      
+      <multiplicity id="89" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="90">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="91" name="tokenService">        
+        <position height="17" width="69" x="588" y="699"/>      
+      </attribute>      
+      <multiplicity id="92" minimum="0" maximum="1">        
+        <position height="15" width="23" x="658" y="702"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="25" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="93">    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="28"/>  
+  </realization>  
+  <association id="94">    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="95" name="userService">        
+        <position height="17" width="64" x="843" y="684"/>      
+      </attribute>      
+      <multiplicity id="96" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="97">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="98" name="user"/>      
+      <multiplicity id="99" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="100">    
+    <bendpoint x="681" y="250"/>    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="101" name="currentJob">        
+        <position height="17" width="59" x="778" y="188"/>      
+      </attribute>      
+      <multiplicity id="102" minimum="0" maximum="1">        
+        <position height="15" width="23" x="808" y="213"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="103">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="104" name="priority"/>      
+      <multiplicity id="105" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="106">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="107" name="currentCounter"/>      
+      <multiplicity id="108" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
