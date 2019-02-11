@@ -1,4 +1,4 @@
-package com.saurav.bankingapp.model.dto;
+package com.saurav.bankingapp.model.request_response;
 
 import java.util.Date;
 import java.util.List;

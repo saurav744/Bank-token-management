@@ -21,5 +21,7 @@ public interface BankServiceService {
 	public Counter allocateCounter(String name, CounterPriority priority);
 	
 	public List<BankService> getUserServices(List<String> services);
+	
+	public void update(long id, BankService service);
 
 }

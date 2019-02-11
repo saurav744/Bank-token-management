@@ -18,17 +18,22 @@ import com.saurav.bankingapp.model.Counter;
 import com.saurav.bankingapp.model.Job;
 import com.saurav.bankingapp.model.Token;
 import com.saurav.bankingapp.model.User;
-import com.saurav.bankingapp.model.dto.CounterResponse;
-import com.saurav.bankingapp.model.dto.TokenRequest;
-import com.saurav.bankingapp.model.dto.TokenResponse;
 import com.saurav.bankingapp.model.enums.CounterPriority;
 import com.saurav.bankingapp.model.enums.TokenState;
 import com.saurav.bankingapp.model.enums.UserType;
+import com.saurav.bankingapp.model.request_response.CounterResponse;
+import com.saurav.bankingapp.model.request_response.TokenRequest;
+import com.saurav.bankingapp.model.request_response.TokenResponse;
 import com.saurav.bankingapp.service.BankServiceService;
 import com.saurav.bankingapp.service.CounterService;
 import com.saurav.bankingapp.service.TokenService;
 import com.saurav.bankingapp.service.UserService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+
+@Api(value = "Token management APIs")
 @RestController
 public class TokenController {
 	
@@ -41,7 +46,7 @@ public class TokenController {
 	@Autowired
 	private BankServiceService bankServiceService;
 	
-	
+	@ApiOperation(value = "Returns mapping of tokens to counters", response = List.class)
 	@GetMapping("/tokens")
 	public List<CounterResponse> getCounterTokenMapping() throws Exception {
 		
@@ -54,8 +59,10 @@ public class TokenController {
 		return counterTokenMap;
 	}
 	
+	@ApiOperation(value = "Returns a list of tokens for a given counter", response = CounterResponse.class)
 	@GetMapping("/tokens/counter/{counterNumber}")
-	public CounterResponse getTokensByCounter(@PathVariable int counterNumber) throws Exception {
+	public CounterResponse getTokensByCounter(
+			@ApiParam(value = "Unique Counter number", required = true) @PathVariable int counterNumber) throws Exception {
 		
 		Counter counter = counterService.get(counterNumber);
 		return createCounterReponse(counter);	
@@ -69,16 +76,19 @@ public class TokenController {
 		return counterResponse;		
 	}
 	
+	@ApiOperation(value = "Returns a token by id", response = TokenResponse.class)
 	@GetMapping("/tokens/{id}")
-	public TokenResponse getTokenById(@PathVariable long id) throws Exception {
+	public TokenResponse getTokenById(
+			@ApiParam(value = "Unique Id of the token", required = true) @PathVariable long id) throws Exception {
 		
 		Token token = tokenService.get(id);
-		
 		return createTokenResponse(token);
 	}
 	
+	@ApiOperation(value = "Create a new Token from token request", response = TokenResponse.class)
 	@PostMapping("/tokens")
-	public TokenResponse create(@RequestBody TokenRequest tokenRequest) throws Exception {
+	public TokenResponse create(
+			@ApiParam(value = "Token request object", required = true) @RequestBody TokenRequest tokenRequest) throws Exception {
 		
 		List<BankService> services = bankServiceService.getUserServices(tokenRequest.getServiceNames());
 		User user = userService.get(tokenRequest.getPhone());
@@ -104,8 +114,10 @@ public class TokenController {
 				token.getCreatedAt(), token.getComment());	
 	}
 	
+	@ApiOperation(value = "Marks the current job of a token completed")
 	@PutMapping("/tokens/{id}/complete")
-	public void completeToken(@PathVariable Long id) throws TokenNotFoundException {
+	public void completeToken(
+			@ApiParam(value = "Unique Id of the token", required = true) @PathVariable Long id) throws TokenNotFoundException {
 
 		if(!tokenService.isValid(id)) {	
 			throw new TokenNotFoundException();
@@ -128,8 +140,11 @@ public class TokenController {
 		tokenService.updateToken(token);
 	}
 	
+	@ApiOperation(value = "Updates the comment of a token")
 	@PutMapping("/tokens/{id}/comment")
-	public void comment(@PathVariable Long id, @RequestBody String comment) throws TokenNotFoundException {
+	public void comment(
+			@ApiParam(value = "Unique Id of the token", required = true) @PathVariable Long id, 
+			@ApiParam(value = "Updated comment string", required = true) @RequestBody String comment) throws TokenNotFoundException {
 
 		if(!tokenService.isValid(id)) {	
 			throw new TokenNotFoundException();
@@ -138,8 +153,10 @@ public class TokenController {
 		tokenService.updateComment(id, comment);
 	}
 	
+	@ApiOperation(value = "Marks a given token cancelled")
 	@PutMapping("/tokens/{id}/cancel")
-	public void cancelToken(@PathVariable Long id) throws TokenNotFoundException {
+	public void cancelToken(
+			@ApiParam(value = "Unique Id of the token", required = true) @PathVariable Long id) throws TokenNotFoundException {
 
 		if(!tokenService.isValid(id)) {	
 			throw new TokenNotFoundException();

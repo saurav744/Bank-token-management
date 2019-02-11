@@ -1,5 +1,6 @@
 package com.saurav.bankingapp.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +60,19 @@ public class CounterServiceImpl implements CounterService{
 			counter.setQueueSize(len - 1);
 			counterRepository.save(counter);
 		}	
+	}
+
+	@Override
+	public List<Counter> getCountersFromList(List<Integer> counterNumbers) {
+		
+		List<Counter> counters = new ArrayList<Counter>();
+		
+		for (Integer num : counterNumbers) {
+			Counter counter = counterRepository.findByNumber(num);
+			counters.add(counter);
+			
+		}
+		return counters;
 	}
 
 }

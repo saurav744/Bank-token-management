@@ -93,5 +93,14 @@ public class BankServiceServiceImpl implements BankServiceService {
 		return services;		
 	}
 
+	@Override
+	public void update(long id, BankService newService) {
+		BankService bankService = bankServiceRepository.getOne(id);
+		
+		bankService.setNextId(newService.getNextId());
+		bankService.setCounters(newService.getCounters());
+		
+		bankServiceRepository.save(bankService);		
+	}
 
 }

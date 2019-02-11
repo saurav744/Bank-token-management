@@ -22,7 +22,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable()
 		    .authorizeRequests()
 		  	.antMatchers("/users/**").hasAnyAuthority("MANAGER", "OPERATOR", "PREMIUM", "REGULAR")
-		  	.antMatchers("/tokens/**").hasAnyAuthority("MANAGER", "OPERATOR")
+		  	.antMatchers("/tokens/**").hasAnyAuthority("MANAGER", "OPERATOR","PREMIUM", "REGULAR")
+		  	.antMatchers("/tokens/{id}/complete").hasAnyAuthority("MANAGER", "OPERATOR")
+		  	.antMatchers("/tokens/{id}/cancel").hasAnyAuthority("MANAGER", "OPERATOR")
+		  	.antMatchers("/services/**").hasAnyAuthority("MANAGER", "OPERATOR")
+		  	.antMatchers("/counters/**").hasAnyAuthority("MANAGER", "OPERATOR")
 			.and().httpBasic().realmName("MY APP REALM")
 			.authenticationEntryPoint(appAuthenticationEntryPoint);
 	} 

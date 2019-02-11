@@ -2,6 +2,8 @@ package com.saurav.bankingapp.controller;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.Date;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -37,7 +39,7 @@ public class UserControllerTest {
 	@MockBean
 	private UserService userService;
 	
-	User mockUser = new User("Simbha", "lion@king", "HakunaMatata", "12345678", "123 abc avenue", UserType.REGULAR );
+	User mockUser = new User("Simbha", "lion@king", "HakunaMatata", "12345678", "123 abc avenue", new Date(), UserType.REGULAR );
 	
 	String userJson = "{\"name\": \"Simbha\",\"email\": \"lion@king\",\"password\": \"HakunaMatata\",\"phone\": \"12345678\",\"type\": \"REGULAR\"}";
 	

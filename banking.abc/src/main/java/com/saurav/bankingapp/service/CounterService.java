@@ -20,5 +20,7 @@ public interface CounterService {
 	public void incrementQueueSize(int number);
 	
 	public void decrementQueueSize(int number);
+	
+	public List<Counter> getCountersFromList(List<Integer> counterNumbers);
 
 }

@@ -1,5 +1,6 @@
 package com.saurav.bankingapp.service.impl;
 
+import java.util.Date;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public void add(String name, String email, String password, String phone, String address, UserType type) {
 		
-		User user = new User(name, email, encoder.encode(password), phone, address, type);
+		User user = new User(name, email, encoder.encode(password), phone, address, new Date(), type);
 		userRepository.save(user);	
 		
 	}

@@ -3,6 +3,7 @@ package com.saurav.bankingapp.controller;
 import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.BeforeClass;
@@ -52,7 +53,7 @@ public class TokenControllerTest {
 	@MockBean
 	private CounterService counterService;
 	
-	static User mockUser = new User("Simbha", "lion@king", "HakunaMatata", "12345678", "123 abc avenue", UserType.REGULAR );
+	static User mockUser = new User("Simbha", "lion@king", "HakunaMatata", "12345678", "123 abc avenue",new Date(), UserType.REGULAR );
 	
 	String userJson = "{\"name\": \"Simbha\",\"email\": \"lion@king\",\"password\": \"HakunaMatata\",\"phone\": \"12345678\",\"type\": \"REGULAR\"}";
 	
@@ -67,9 +68,6 @@ public class TokenControllerTest {
 	
 	@BeforeClass
 	public static void setup() {
-		
-		//counter1.setQueueSize(1);
-		//counter2.setQueueSize(1);
 		
 		counters.add(counter2);
 		counters.add(counter3);

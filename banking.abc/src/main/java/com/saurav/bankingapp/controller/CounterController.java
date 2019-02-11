@@ -12,37 +12,52 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.saurav.bankingapp.exceptions.UserNotFoundException;
 import com.saurav.bankingapp.model.Counter;
+import com.saurav.bankingapp.model.User;
 import com.saurav.bankingapp.model.enums.CounterPriority;
 import com.saurav.bankingapp.service.CounterService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+
+@Api(value = "Counter management APIs")
 @RestController
 public class CounterController {
 
 	@Autowired
 	private CounterService counterService;
 	
+	@ApiOperation(value = "View a Counter by number", response = Counter.class)
 	@GetMapping("/counters/{number}")
-	public Counter getCounter(@PathVariable int number) {	
+	public Counter getCounter(
+			@ApiParam(value = "Unique number of the Counter", required = true) @PathVariable int number) {	
 		return counterService.get(number);
 	}
-	
+
+	@ApiOperation(value = "View all Counters", response = List.class)
 	@GetMapping("/counters")
 	public List<Counter> getAllCounters(@PathVariable int number) {	
 		return counterService.getAll();
 	}
 	
+	@ApiOperation(value = "View Counters by priority", response = List.class)
 	@GetMapping("/counters/{priority}")
-	public List<Counter> getCountersByPriority(@PathVariable CounterPriority priority) {	
+	public List<Counter> getCountersByPriority(
+			@ApiParam(value = "Priority of the Counter", required = true) @PathVariable CounterPriority priority) {	
 		return counterService.getAllByPriority(priority);
 	}
 	
+	@ApiOperation(value = "Create a new Counter")
 	@PostMapping("/counters")
-	public void createCounter(@RequestBody Counter counter) {
+	public void createCounter(
+			@ApiParam(value = "Counter object to be stored", required = true) @RequestBody Counter counter) {
 		counterService.add(counter);
 	}
 	
+	@ApiOperation(value = "Delete Counter by number", response = User.class)
 	@DeleteMapping("/counters/{number}")
-	public void deleteUser(@PathVariable int number) throws UserNotFoundException {
+	public void deleteUser(
+			@ApiParam(value = "Unique number of the Counter to be deleted", required = true) @PathVariable int number) throws UserNotFoundException {
 		counterService.delete(number);
 	}
 

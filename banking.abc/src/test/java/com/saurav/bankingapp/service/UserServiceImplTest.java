@@ -2,6 +2,7 @@ package com.saurav.bankingapp.service;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.Date;
 import java.util.Optional;
 
 import org.junit.Test;
@@ -27,7 +28,7 @@ public class UserServiceImplTest {
 	@MockBean
 	private UserRepository userRepository;
 	
-	User mockUser = new User("Simbha", "lion@king", "HakunaMatata", "12345678", "123 abc avenue", UserType.REGULAR );
+	User mockUser = new User("Simbha", "lion@king", "HakunaMatata", "12345678", "123 abc avenue", new Date(), UserType.REGULAR );
 	Optional<User> opMockUser = Optional.of(mockUser);
 	
 	@Test
