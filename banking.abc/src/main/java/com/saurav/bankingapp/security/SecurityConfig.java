@@ -25,7 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		  	.antMatchers("/tokens/**").hasAnyAuthority("MANAGER", "OPERATOR","PREMIUM", "REGULAR")
 		  	.antMatchers("/tokens/{id}/complete").hasAnyAuthority("MANAGER", "OPERATOR")
 		  	.antMatchers("/tokens/{id}/cancel").hasAnyAuthority("MANAGER", "OPERATOR")
-		  	.antMatchers("/services/**").hasAnyAuthority("MANAGER", "OPERATOR")
+		  	.antMatchers("/services/**").hasAnyAuthority("MANAGER", "OPERATOR","PREMIUM", "REGULAR")
 		  	.antMatchers("/counters/**").hasAnyAuthority("MANAGER", "OPERATOR")
 			.and().httpBasic().realmName("MY APP REALM")
 			.authenticationEntryPoint(appAuthenticationEntryPoint);

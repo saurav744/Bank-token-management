@@ -14,6 +14,11 @@ import com.saurav.bankingapp.model.enums.CounterPriority;
 import com.saurav.bankingapp.repository.BankServiceRepository;
 import com.saurav.bankingapp.service.BankServiceService;
 
+/**
+ *
+ * @author Saurav Sharma
+ *
+ */
 @Service("bankServiceService")
 @Transactional
 public class BankServiceServiceImpl implements BankServiceService {
