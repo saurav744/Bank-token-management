@@ -52,7 +52,7 @@ public class ServiceController {
 	public void createService(
 			@ApiParam(value = "Service request object", required = true) @RequestBody BankServiceRequest newServiceRequest) {
 		List<Counter> counters = counterService.getCountersFromList(newServiceRequest.getCounters());	
-		BankService newService = new BankService(newServiceRequest.getName(), newServiceRequest.getNextId(), counters);		
+		BankService newService = new BankService(newServiceRequest.getName(), newServiceRequest.getNextService(), counters);		
 		bankServiceService.add(newService);
 	}
 	
@@ -69,7 +69,7 @@ public class ServiceController {
 			@ApiParam(value = "Unique id of the service to be updated", required = true) @PathVariable Long id, 
 			@ApiParam(value = "Service request object containing updated values", required = true) @RequestBody BankServiceRequest newServiceRequest) {
 		List<Counter> counters = counterService.getCountersFromList(newServiceRequest.getCounters());
-		BankService newService = new BankService(newServiceRequest.getName(), newServiceRequest.getNextId(), counters);
+		BankService newService = new BankService(newServiceRequest.getName(), newServiceRequest.getNextService(), counters);
 		bankServiceService.update(id, newService);
 	}
 

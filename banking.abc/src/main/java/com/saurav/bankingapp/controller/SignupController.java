@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.saurav.bankingapp.model.enums.UserType;
 import com.saurav.bankingapp.model.request_response.UserRequest;
 import com.saurav.bankingapp.service.UserService;
 
@@ -23,7 +24,8 @@ public class SignupController {
 	@PostMapping("/signup")
 	public void createUser(
 			@ApiParam(value = "User request object to be stored in Db", required = true) @RequestBody UserRequest newUser) {
-		userService.add(newUser.getName(), newUser.getEmail(), newUser.getPassword(), newUser.getPhone(), newUser.getAddress(), newUser.getType());
+		UserType type = newUser.getType() == UserType.REGULAR ? UserType.REGULAR : UserType.PREMIUM;
+		userService.add(newUser.getName(), newUser.getEmail(), newUser.getPassword(), newUser.getPhone(), newUser.getAddress(), type);
 	}
 
 }

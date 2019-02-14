@@ -87,12 +87,12 @@ public class BankServiceServiceImpl implements BankServiceService {
 			BankService bankService = bankServiceRepository.findByName(name);
 			services.add(bankService);
 			
-			while (bankService.getNextId() != null) {
-                Optional<BankService> nextService = bankServiceRepository.findById(bankService.getNextId());
-                if(nextService.isPresent()) {
-                	services.add(nextService.get());
+			while (!bankService.getNextService().isEmpty() && bankService.getNextService() != null) {
+                BankService nextService = bankServiceRepository.findByName(bankService.getNextService());
+                if(nextService != null) {
+                	services.add(nextService);
                 }
-                bankService = nextService.get();
+                bankService = nextService;
 			}
 		}
 		return services;		
@@ -102,7 +102,7 @@ public class BankServiceServiceImpl implements BankServiceService {
 	public void update(long id, BankService newService) {
 		BankService bankService = bankServiceRepository.getOne(id);
 		
-		bankService.setNextId(newService.getNextId());
+		bankService.setNextService(newService.getNextService());
 		bankService.setCounters(newService.getCounters());
 		
 		bankServiceRepository.save(bankService);		

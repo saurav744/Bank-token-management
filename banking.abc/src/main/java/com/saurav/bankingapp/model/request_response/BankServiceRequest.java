@@ -6,14 +6,14 @@ public class BankServiceRequest {
 
 	private String name;
 
-	private Long nextId;
+	private String nextService;
 
 	private List<Integer> counters;
 
-	public BankServiceRequest(String name, Long nextId, List<Integer> counters) {
+	public BankServiceRequest(String name, String nextService, List<Integer> counters) {
 		super();
 		this.name = name;
-		this.nextId = nextId;
+		this.nextService = nextService;
 		this.counters = counters;
 	}
 
@@ -28,12 +28,12 @@ public class BankServiceRequest {
 		this.name = name;
 	}
 
-	public Long getNextId() {
-		return nextId;
+	public String getNextService() {
+		return nextService;
 	}
 
-	public void setNextId(Long nextId) {
-		this.nextId = nextId;
+	public void setNextService(String nextService) {
+		this.nextService = nextService;
 	}
 
 	public List<Integer> getCounters() {

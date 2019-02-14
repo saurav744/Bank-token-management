@@ -1,6 +1,5 @@
 package com.saurav.bankingapp.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -9,13 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import javax.persistence.JoinColumn;
 
 @Entity
 public class BankService {
@@ -28,8 +24,8 @@ public class BankService {
 	@Column(unique = true)
 	private String name;
 
-	@Column(name = "next_service_id")
-	private Long nextId;
+	@Column(name = "next_service_name")
+	private String nextService;
 
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "service_counter", joinColumns = @JoinColumn(name = "service_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "counter_id", referencedColumnName = "id"))
@@ -39,9 +35,9 @@ public class BankService {
 		
 	}
 	
-	public BankService(@NotNull String name, Long nextId, List<Counter> counters) {
+	public BankService(@NotNull String name, String nextService, List<Counter> counters) {
 		this.name = name;
-		this.nextId = nextId;
+		this.nextService = nextService;
 		this.counters = counters;
 	}
 
@@ -61,12 +57,12 @@ public class BankService {
 		this.name = name;
 	}
 
-	public Long getNextId() {
-		return nextId;
+	public String getNextService() {
+		return nextService;
 	}
 
-	public void setNextId(Long nextId) {
-		this.nextId = nextId;
+	public void setNextService(String nextService) {
+		this.nextService = nextService;
 	}
 
 	public List<Counter> getCounters() {

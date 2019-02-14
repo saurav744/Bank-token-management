@@ -23,6 +23,9 @@ public class TokenResponse {
 	
 	String comment;
 
+	public TokenResponse() {
+	}
+
 	public TokenResponse(long id, long userId, List<String> services, int currentCounter, long currentJobId,
 			TokenState status, Date createdAt, String comment) {
 		this.id = id;
@@ -34,5 +37,71 @@ public class TokenResponse {
 		this.createdAt = createdAt;
 		this.comment = comment;
 	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(long userId) {
+		this.userId = userId;
+	}
+
+	public List<String> getServiceRequests() {
+		return serviceRequests;
+	}
+
+	public void setServiceRequests(List<String> serviceRequests) {
+		this.serviceRequests = serviceRequests;
+	}
+
+	public int getCurrentCounter() {
+		return currentCounter;
+	}
+
+	public void setCurrentCounter(int currentCounter) {
+		this.currentCounter = currentCounter;
+	}
+
+	public long getCurrentJobId() {
+		return currentJobId;
+	}
+
+	public void setCurrentJobId(long currentJobId) {
+		this.currentJobId = currentJobId;
+	}
+
+	public TokenState getStatus() {
+		return status;
+	}
+
+	public void setStatus(TokenState status) {
+		this.status = status;
+	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+	
+	
 	
 }

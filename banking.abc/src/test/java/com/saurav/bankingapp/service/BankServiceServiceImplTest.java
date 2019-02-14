@@ -35,7 +35,7 @@ public class BankServiceServiceImplTest {
 	
 	List<Counter> counters = new ArrayList<Counter>();
 	
-	BankService bankService = new BankService("MockService", 1L, counters);
+	BankService bankService = new BankService("MockService", "", counters);
 	
 	@Test
 	public void testAllocateCounter_001() {

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.saurav.bankingapp.exceptions.TokenNotFoundException;
+import com.saurav.bankingapp.exceptions.UserNotFoundException;
 import com.saurav.bankingapp.model.BankService;
 import com.saurav.bankingapp.model.Counter;
 import com.saurav.bankingapp.model.Job;
@@ -163,6 +165,13 @@ public class TokenController {
 		}
 		
 		tokenService.setState(id, TokenState.CANCELLED);
-	}	
+	}
+	
+	@ApiOperation(value = "Delete token by number", response = User.class)
+	@DeleteMapping("/tokens/{id}")
+	public void deleteToken(
+			@ApiParam(value = "Unique id of the token to be deleted", required = true) @PathVariable Long id) throws TokenNotFoundException {
+		tokenService.delete(id);
+	}
 	
 }

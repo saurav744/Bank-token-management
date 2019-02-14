@@ -14,6 +14,7 @@ import com.saurav.bankingapp.exceptions.UserNotFoundException;
 import com.saurav.bankingapp.model.Counter;
 import com.saurav.bankingapp.model.User;
 import com.saurav.bankingapp.model.enums.CounterPriority;
+import com.saurav.bankingapp.model.request_response.CounterRequest;
 import com.saurav.bankingapp.service.CounterService;
 
 import io.swagger.annotations.Api;
@@ -36,7 +37,7 @@ public class CounterController {
 
 	@ApiOperation(value = "View all Counters", response = List.class)
 	@GetMapping("/counters")
-	public List<Counter> getAllCounters(@PathVariable int number) {	
+	public List<Counter> getAllCounters() {	
 		return counterService.getAll();
 	}
 	
@@ -50,14 +51,15 @@ public class CounterController {
 	@ApiOperation(value = "Create a new Counter")
 	@PostMapping("/counters")
 	public void createCounter(
-			@ApiParam(value = "Counter object to be stored", required = true) @RequestBody Counter counter) {
+			@ApiParam(value = "Counter object to be stored", required = true) @RequestBody CounterRequest counterRequest) {
+		Counter counter = new Counter(counterRequest.getNumber(), counterRequest.getPriority());
 		counterService.add(counter);
 	}
 	
 	@ApiOperation(value = "Delete Counter by number", response = User.class)
 	@DeleteMapping("/counters/{number}")
-	public void deleteUser(
-			@ApiParam(value = "Unique number of the Counter to be deleted", required = true) @PathVariable int number) throws UserNotFoundException {
+	public void deleteCounter(
+			@ApiParam(value = "Unique number of the Counter to be deleted", required = true) @PathVariable int number) {
 		counterService.delete(number);
 	}
 
