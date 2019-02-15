@@ -8,11 +8,11 @@ A system to manage tokens in a bank.
 
 * Java 8
 * Maven
-* Mysql
+* MySQL
 
 ### Usage
 
-1. Import as existing Maven project and set configuration in "application.properties" file e.g Databse name or Mysql configuration. Create a local database *banking* (or choose any name).
+1. Import as existing Maven project and set configuration in "application.properties" file e.g Databse name or MySQL configuration. Create a local database *banking* (or choose any name).
 
 2. Run as spring boot app. The tables will be created by spring hibernate.
 
