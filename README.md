@@ -6,9 +6,9 @@ A system to manage tokens in a bank.
 
 ### Prerequesites
 
-*Java 8
-*Maven
-*Mysql
+* Java 8
+* Maven
+* Mysql
 
 ### Usage
 
@@ -64,6 +64,8 @@ POST /tokens
 ```
 GET /tokens
 ```
+
+8. Refer documentation in banking.abc/doc folder and class diagrams placed in banking.abc/classdiagram folder.
 
 ## Token Management
 
