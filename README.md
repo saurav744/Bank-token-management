@@ -51,7 +51,13 @@ POST /counters
 POST /services
 ```
 
-But these are authorised to *MANAGER* and *OPERATOR* roles. For that you have to create a manual entry once into user table with column type = 2 or 3 (MANAGER or OPERATOR) after the tables are created.
+But these are only authorised for *MANAGER* and *OPERATOR* roles.
+For that you have to create a manual entry for role of manager into user table with column 'type' = 2 or 3 (MANAGER or OPERATOR) after the tables are created, as we can only create customers having user type 'PREMIUM' or 'NORMAL' using *signup* method :
+
+```
+insert into user (id, name, email, address, password, phone, added_date, type) values (1, 'admin', 'admin@abc', '123, bank avenue, xyz city', '$2a$10$lT8UIrt8lT7VSCdm0MlutODW/AYrHq3J8TlABP0htzi4jD9gegMZC', '987654321', '2019-02-15', 2);
+```
+And, use username '987654321' and password 'admin' for authentication for manager role.
 
 6. Create new tokens by adding bank services names in the body via:
 
