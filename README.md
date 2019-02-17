@@ -57,7 +57,7 @@ For that you have to create a manual entry for role of manager into user table w
 ```
 insert into user (id, name, email, address, password, phone, added_date, type) values (1, 'admin', 'admin@abc', '123, bank avenue, xyz city', '$2a$10$lT8UIrt8lT7VSCdm0MlutODW/AYrHq3J8TlABP0htzi4jD9gegMZC', '987654321', '2019-02-15', 2);
 ```
-And, use username '987654321' and password 'admin' for authentication for manager role.
+And, use username '987654321' and password 'admin'(encrypted in above query) for authentication for manager role.
 
 6. Create new tokens by adding bank services names in the body via:
 
