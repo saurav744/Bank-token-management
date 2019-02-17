@@ -2,7 +2,6 @@ package com.saurav.bankingapp.service;
 
 import java.util.List;
 
-import com.saurav.bankingapp.exceptions.TokenNotFoundException;
 import com.saurav.bankingapp.model.BankService;
 import com.saurav.bankingapp.model.Counter;
 import com.saurav.bankingapp.model.Token;
@@ -28,17 +27,15 @@ public interface TokenService {
 	/**
 	 * Deletes a token with given id
 	 * @param id unique id of token
-	 * @throws TokenNotFoundException
 	 */
-	public void delete(long id) throws TokenNotFoundException;
+	public void delete(long id);
 	
 	/**
 	 * Returns a token with given id
 	 * @param id id if the token
 	 * @return token object with given id
-	 * @throws TokenNotFoundException
 	 */
-	public Token get(long id) throws TokenNotFoundException;
+	public Token get(long id);
 	
 	/**
 	 * Returns all valid tokens
@@ -50,33 +47,29 @@ public interface TokenService {
 	 * Checks if given token is valid
 	 * @param id id of the token
 	 * @return true if token is valid else false
-	 * @throws TokenNotFoundException
 	 */
-	public boolean isValid(long id) throws TokenNotFoundException;
+	public boolean isValid(long id);
 	
 	/**
 	 * Updates the status of the token
 	 * @param id id of the token to be updated
 	 * @param state new status to be updated
-	 * @throws TokenNotFoundException
 	 */
-	public void setState(long id, TokenState state) throws TokenNotFoundException;
+	public void setState(long id, TokenState state);
 	
 	/**
 	 * Updates the comment on the token
 	 * @param id id of the token
 	 * @param comment updated comment string
-	 * @throws TokenNotFoundException
 	 */
-	public void updateComment(long id, String comment) throws TokenNotFoundException;
+	public void updateComment(long id, String comment);
 	
 	/**
 	 * Completes the current job of the token. Marks the token as completed if all jobs are complete.
 	 * @param id id of the token
 	 * @return the token with given id
-	 * @throws TokenNotFoundException
 	 */
-	public Token completeCurrentJob(long id) throws TokenNotFoundException;
+	public Token completeCurrentJob(long id);
 	
 	/**
 	 * Returns all tokens assigned to a given counter

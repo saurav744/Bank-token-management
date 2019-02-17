@@ -1,6 +1,5 @@
 package com.saurav.bankingapp.service;
 
-import com.saurav.bankingapp.exceptions.UserNotFoundException;
 import com.saurav.bankingapp.model.User;
 import com.saurav.bankingapp.model.enums.UserType;
 
@@ -24,33 +23,29 @@ public interface UserService {
 	/**
 	 * Deletes a user from repository
 	 * @param id unique id of user
-	 * @throws UserNotFoundException
 	 */
-	public void delete(long id) throws UserNotFoundException;
+	public void delete(long id);
 
 	/**
 	 * Updates the info of a user
 	 * @param id unique id of user
 	 * @param user user object containing info to be updated
-	 * @throws UserNotFoundException
 	 */
-	public void update(long id, User user) throws UserNotFoundException;
+	public void update(long id, User user);
 	
 	/**
 	 * Returns a user by phone number
 	 * @param phone phone number of user
 	 * @return user object having given phone number
-	 * @throws UserNotFoundException
 	 */
-	public User get(String phone) throws UserNotFoundException;
+	public User get(String phone);
 
 	/**
 	 * Returns a user by its Id
 	 * @param id unique id of user
 	 * @return user object with given Id
-	 * @throws UserNotFoundException
 	 */
-	public User getById(long id) throws UserNotFoundException;
+	public User getById(long id);
 
 	/**
 	 * Checks if a user with given phone number is present

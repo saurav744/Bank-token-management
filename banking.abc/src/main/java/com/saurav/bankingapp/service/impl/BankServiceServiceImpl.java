@@ -4,10 +4,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.saurav.bankingapp.exceptions.ResourceNotFoundException;
 import com.saurav.bankingapp.model.BankService;
 import com.saurav.bankingapp.model.Counter;
 import com.saurav.bankingapp.model.enums.CounterPriority;
@@ -28,6 +29,9 @@ public class BankServiceServiceImpl implements BankServiceService {
 
 	@Override
 	public void add(BankService bankService) {
+		if(bankService == null) {
+			throw new IllegalArgumentException("The bankservice parameter cannot be null");
+		}
 		
 		bankServiceRepository.save(bankService);
 		
@@ -42,14 +46,24 @@ public class BankServiceServiceImpl implements BankServiceService {
 
 	@Override
 	public BankService get(long id) {
+		
+		Optional<BankService> opService = bankServiceRepository.findById(id);
+		
+		if (!opService.isPresent())
+			throw new ResourceNotFoundException(Long.toString(id), "Bank service not found");
 	
-		return bankServiceRepository.getOne(id);
+		return opService.get();
 	}
 
 	@Override
 	public BankService getByName(String name) {
 		
-		return bankServiceRepository.findByName(name);
+		BankService service = bankServiceRepository.findByName(name);
+		
+		if (service == null)
+			throw new ResourceNotFoundException(name, "Bank service not found");
+
+		return service;
 	}
 
 	@Override
@@ -64,6 +78,9 @@ public class BankServiceServiceImpl implements BankServiceService {
 		BankService service = bankServiceRepository.findByName(name);
 		int min = Integer.MAX_VALUE;
 		
+		if (service == null)
+			throw new ResourceNotFoundException(name, "Bank service not found");
+		
 		Counter allocated = null;
 		
 		for(Counter counter : service.getCounters()) {
@@ -71,6 +88,9 @@ public class BankServiceServiceImpl implements BankServiceService {
 				min = counter.getQueueSize();
 				allocated = counter;		
 			}
+		}
+		if (allocated == null) {
+			throw new RuntimeException("Cannot allocate a counter");
 		}
 		return allocated;		
 	}
@@ -101,6 +121,9 @@ public class BankServiceServiceImpl implements BankServiceService {
 	@Override
 	public void update(long id, BankService newService) {
 		BankService bankService = bankServiceRepository.getOne(id);
+		
+		if (bankService == null)
+			throw new ResourceNotFoundException(Long.toString(id), "Bank service not found");
 		
 		bankService.setNextService(newService.getNextService());
 		bankService.setCounters(newService.getCounters());

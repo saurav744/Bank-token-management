@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.saurav.bankingapp.exceptions.UserNotFoundException;
 import com.saurav.bankingapp.model.User;
 import com.saurav.bankingapp.model.request_response.UserRequest;
 import com.saurav.bankingapp.service.UserService;
@@ -36,7 +35,7 @@ public class UserController {
 	})
 	@GetMapping("/users/id/{id}")
 	public User getUser(
-			@ApiParam(value = "Unique Id of user", required = true) @PathVariable Long id) throws UserNotFoundException {
+			@ApiParam(value = "Unique Id of user", required = true) @PathVariable Long id) {
 		return userService.getById(id);
 	}
 
@@ -50,7 +49,7 @@ public class UserController {
 	})   
 	@GetMapping("/users/phone/{phone}")
 	public User getUser(
-			@ApiParam(value = "Phone number of the user", required = true) @PathVariable String phone) throws UserNotFoundException {	
+			@ApiParam(value = "Phone number of the user", required = true) @PathVariable String phone) {	
 		return userService.get(phone);
 	}
 	
@@ -64,7 +63,7 @@ public class UserController {
 	@ApiOperation(value = "Delete a user")
 	@DeleteMapping("/users/{id}")
 	public void deleteUser(
-			@ApiParam(value = "Unique Id of the user to be deleted", required = true) @PathVariable Long id) throws UserNotFoundException {
+			@ApiParam(value = "Unique Id of the user to be deleted", required = true) @PathVariable Long id) {
 		userService.delete(id);
 	}
 

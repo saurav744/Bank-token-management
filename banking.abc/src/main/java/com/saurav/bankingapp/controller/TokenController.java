@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.saurav.bankingapp.exceptions.TokenNotFoundException;
-import com.saurav.bankingapp.exceptions.UserNotFoundException;
 import com.saurav.bankingapp.model.BankService;
 import com.saurav.bankingapp.model.Counter;
 import com.saurav.bankingapp.model.Job;
@@ -35,7 +33,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
-@Api(value = "Token management APIs")
+@Api(value = "Token")
 @RestController
 public class TokenController {
 	
@@ -64,7 +62,7 @@ public class TokenController {
 	@ApiOperation(value = "Returns a list of tokens for a given counter", response = CounterResponse.class)
 	@GetMapping("/tokens/counter/{counterNumber}")
 	public CounterResponse getTokensByCounter(
-			@ApiParam(value = "Unique Counter number", required = true) @PathVariable int counterNumber) throws Exception {
+			@ApiParam(value = "Unique Counter number", required = true) @PathVariable int counterNumber) {
 		
 		Counter counter = counterService.get(counterNumber);
 		return createCounterReponse(counter);	
@@ -81,7 +79,7 @@ public class TokenController {
 	@ApiOperation(value = "Returns a token by id", response = TokenResponse.class)
 	@GetMapping("/tokens/{id}")
 	public TokenResponse getTokenById(
-			@ApiParam(value = "Unique Id of the token", required = true) @PathVariable long id) throws Exception {
+			@ApiParam(value = "Unique Id of the token", required = true) @PathVariable long id) {
 		
 		Token token = tokenService.get(id);
 		return createTokenResponse(token);
@@ -90,7 +88,7 @@ public class TokenController {
 	@ApiOperation(value = "Create a new Token from token request", response = TokenResponse.class)
 	@PostMapping("/tokens")
 	public TokenResponse create(
-			@ApiParam(value = "Token request object", required = true) @RequestBody TokenRequest tokenRequest) throws Exception {
+			@ApiParam(value = "Token request object", required = true) @RequestBody TokenRequest tokenRequest) {
 		
 		List<BankService> services = bankServiceService.getUserServices(tokenRequest.getServiceNames());
 		User user = userService.get(tokenRequest.getPhone());
@@ -119,11 +117,7 @@ public class TokenController {
 	@ApiOperation(value = "Marks the current job of a token completed")
 	@PutMapping("/tokens/{id}/complete")
 	public void completeToken(
-			@ApiParam(value = "Unique Id of the token", required = true) @PathVariable Long id) throws TokenNotFoundException {
-
-		if(!tokenService.isValid(id)) {	
-			throw new TokenNotFoundException();
-		}
+			@ApiParam(value = "Unique Id of the token", required = true) @PathVariable Long id) {
 
 		Token token = tokenService.completeCurrentJob(id);
 		if(token.getStatus() == TokenState.COMPLETED) {
@@ -146,11 +140,7 @@ public class TokenController {
 	@PutMapping("/tokens/{id}/comment")
 	public void comment(
 			@ApiParam(value = "Unique Id of the token", required = true) @PathVariable Long id, 
-			@ApiParam(value = "Updated comment string", required = true) @RequestBody String comment) throws TokenNotFoundException {
-
-		if(!tokenService.isValid(id)) {	
-			throw new TokenNotFoundException();
-		}
+			@ApiParam(value = "Updated comment string", required = true) @RequestBody String comment) {
 		
 		tokenService.updateComment(id, comment);
 	}
@@ -158,11 +148,7 @@ public class TokenController {
 	@ApiOperation(value = "Marks a given token cancelled")
 	@PutMapping("/tokens/{id}/cancel")
 	public void cancelToken(
-			@ApiParam(value = "Unique Id of the token", required = true) @PathVariable Long id) throws TokenNotFoundException {
-
-		if(!tokenService.isValid(id)) {	
-			throw new TokenNotFoundException();
-		}
+			@ApiParam(value = "Unique Id of the token", required = true) @PathVariable Long id) {
 		
 		tokenService.setState(id, TokenState.CANCELLED);
 	}
@@ -170,7 +156,7 @@ public class TokenController {
 	@ApiOperation(value = "Delete token by number", response = User.class)
 	@DeleteMapping("/tokens/{id}")
 	public void deleteToken(
-			@ApiParam(value = "Unique id of the token to be deleted", required = true) @PathVariable Long id) throws TokenNotFoundException {
+			@ApiParam(value = "Unique id of the token to be deleted", required = true) @PathVariable Long id) {
 		tokenService.delete(id);
 	}
 	

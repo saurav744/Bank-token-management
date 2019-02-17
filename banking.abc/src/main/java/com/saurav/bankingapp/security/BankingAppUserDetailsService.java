@@ -11,7 +11,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.saurav.bankingapp.exceptions.UserNotFoundException;
 import com.saurav.bankingapp.service.UserService;
 ;
 
@@ -24,16 +23,13 @@ public class BankingAppUserDetailsService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
 		com.saurav.bankingapp.model.User activeUserInfo;
 		UserDetails userDetails = null;
-		try {
-			activeUserInfo = userService.get(userName);
 
-			GrantedAuthority authority = new SimpleGrantedAuthority(activeUserInfo.getType().toString());
-			userDetails = (UserDetails) new User(activeUserInfo.getPhone(),
-					activeUserInfo.getPassword(), Arrays.asList(authority));
-		} catch (UserNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		activeUserInfo = userService.get(userName);
+
+		GrantedAuthority authority = new SimpleGrantedAuthority(activeUserInfo.getType().toString());
+		userDetails = (UserDetails) new User(activeUserInfo.getPhone(),
+				activeUserInfo.getPassword(), Arrays.asList(authority));
+
 		return userDetails;
 	}
 

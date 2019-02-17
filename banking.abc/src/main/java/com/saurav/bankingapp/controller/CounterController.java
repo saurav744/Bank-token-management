@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.saurav.bankingapp.exceptions.UserNotFoundException;
 import com.saurav.bankingapp.model.Counter;
 import com.saurav.bankingapp.model.User;
 import com.saurav.bankingapp.model.enums.CounterPriority;

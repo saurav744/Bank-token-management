@@ -9,7 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.saurav.bankingapp.exceptions.TokenNotFoundException;
+import com.saurav.bankingapp.exceptions.IllegalInputException;
+import com.saurav.bankingapp.exceptions.ResourceNotFoundException;
 import com.saurav.bankingapp.model.BankService;
 import com.saurav.bankingapp.model.Counter;
 import com.saurav.bankingapp.model.Job;
@@ -51,18 +52,18 @@ public class TokenServiceImpl implements TokenService {
 	}
 
 	@Override
-	public void delete(long id) throws TokenNotFoundException {
+	public void delete(long id) {
 		
 		if(tokenRepository.findById(id).isPresent()) {
 			tokenRepository.deleteById(id);
 		}
 		else
-			throw new TokenNotFoundException();
+			throw new ResourceNotFoundException(Long.toString(id), "Token not found");
 		
 	}
 
 	@Override
-	public Token get(long id) throws TokenNotFoundException {
+	public Token get(long id) {
 		
 	    Optional<Token> token = tokenRepository.findById(id);
 		
@@ -70,7 +71,7 @@ public class TokenServiceImpl implements TokenService {
 			return token.get();
 		}
 		else
-			throw new TokenNotFoundException();
+			throw new ResourceNotFoundException(Long.toString(id), "Token not found");
 	}
 
 	@Override
@@ -79,7 +80,7 @@ public class TokenServiceImpl implements TokenService {
 	}
 
 	@Override
-	public void setState(long id, TokenState state) throws TokenNotFoundException {
+	public void setState(long id, TokenState state) {
 		
 	    Optional<Token> token = tokenRepository.findById(id);
 		
@@ -89,14 +90,14 @@ public class TokenServiceImpl implements TokenService {
 				tokenRepository.save(token.get());
 			}
 			else
-				throw new TokenNotFoundException();
+				throw new IllegalInputException("Token is not valid");
 		}
 		else
-			throw new TokenNotFoundException();
+			throw new ResourceNotFoundException(Long.toString(id), "Token not found");
 	}
 
 	@Override
-	public void updateComment(long id, String comment) throws TokenNotFoundException {
+	public void updateComment(long id, String comment) {
 		
 		Optional<Token> token = tokenRepository.findById(id);
 		
@@ -106,10 +107,10 @@ public class TokenServiceImpl implements TokenService {
 				tokenRepository.save(token.get());
 			}
 			else
-				throw new TokenNotFoundException();
+				throw new IllegalInputException("Token is not valid");
 		}
 		else
-			throw new TokenNotFoundException();	
+			throw new ResourceNotFoundException(Long.toString(id), "Token not found");	
 	}
 
 	@Override
@@ -119,7 +120,7 @@ public class TokenServiceImpl implements TokenService {
 	}
 
 	@Override
-	public boolean isValid(long id) throws TokenNotFoundException{
+	public boolean isValid(long id) {
 		
 		Optional<Token> token = tokenRepository.findById(id);
 		
@@ -130,11 +131,14 @@ public class TokenServiceImpl implements TokenService {
 				return false;
 		}
 		else
-			throw new TokenNotFoundException();
+			throw new ResourceNotFoundException(Long.toString(id), "Token not found");
 	}
 
 	@Override
-	public Token completeCurrentJob(long id) throws TokenNotFoundException{
+	public Token completeCurrentJob(long id) {
+		if(!isValid(id)) {
+			throw new IllegalInputException("Token not valid");
+		}
 		
 		Optional<Token> optionalToken = tokenRepository.findById(id);
 		
@@ -153,11 +157,13 @@ public class TokenServiceImpl implements TokenService {
 			return token;
 		}
 		else
-			throw new TokenNotFoundException();
+			throw new ResourceNotFoundException(Long.toString(id), "Token not found");
 	}
 
 	@Override
 	public void updateToken(Token token) {
+		if(token == null)
+			throw new IllegalInputException("Input to update token cannot be null");
 		
 		tokenRepository.save(token);
 		
