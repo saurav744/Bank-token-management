@@ -19,7 +19,7 @@ public class GlobalAPIExceptionHandler {
 
     @ExceptionHandler({IllegalArgumentException.class, IllegalInputException.class, NullPointerException.class,
             MethodArgumentNotValidException.class})
-    public ResponseEntity<ExceptionResponse> illegalArgumentPass(Exception illegalEx) {
+    public ResponseEntity<ExceptionResponse> illegalArgumentPassed(Exception illegalEx) {
     	
         ExceptionResponse exceptionResponse = new ExceptionResponse(HttpStatus.BAD_REQUEST.toString(), illegalEx.getMessage());
         return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
