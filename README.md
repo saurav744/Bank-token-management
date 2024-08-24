@@ -1,4 +1,4 @@
-# ABC Banking
+# Bank token management
 
 A system to manage tokens in a bank.
 
